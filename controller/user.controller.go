@@ -14,6 +14,8 @@ type userController struct {
 func (c *userController) setupRoutes(app fiber.Router) {
 	controller := "/users"
 	app.Post(controller, save)
+	app.Get(controller, list)
+	app.Get(controller+"/:id", get)
 	app.Delete(controller+"/:id", delete)
 }
 
@@ -34,4 +36,19 @@ func delete(ctx *fiber.Ctx) {
 	}
 	business.DeleteUser(uint(id))
 	ctx.Status(204)
+}
+
+func list(ctx *fiber.Ctx) {
+	name := ctx.Query("name")
+	users := business.ListUsers(name)
+	ctx.JSON(users)
+}
+
+func get(ctx *fiber.Ctx) {
+	id, err := strconv.ParseUint(ctx.Params("id"), 10, 32)
+	if err != nil {
+		panic(err)
+	}
+	user := business.GetUser(uint(id))
+	ctx.JSON(user)
 }
