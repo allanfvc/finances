@@ -17,5 +17,6 @@ func RegisterRoutes(app fiber.Router) {
 func getAllRoutes() []appController {
 	routes := []appController{}
 	routes = append(routes, new(userController))
+	routes = append(routes, new(inputController))
 	return routes
 }

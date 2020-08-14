@@ -6,11 +6,11 @@ import (
 
 type Input struct {
 	gorm.Model
-	description string
-	value       float32
-	typeInput   int
-	status      int
-	user        User
-	month       int
-	year        int
+	Description string  `json:"description" gorm:"not null"`
+	Value       float32 `json:"value" gorm:"not null"`
+	TypeInput   int     `json:"type" gorm:"not null"`
+	Status      int     `json:"status" gorm:"not null"`
+	User        User    `json:"user" gorm:"not null"`
+	Month       int     `json:"month" gorm:"not null"`
+	Year        int     `json:"year" gorm:"not null"`
 }

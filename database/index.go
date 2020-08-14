@@ -8,8 +8,10 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 )
 
+//DBConn database connection
 var DBConn *gorm.DB
 
+//InitDatabase opens the database connection
 func InitDatabase() {
 	var err error
 	DBConn, err = gorm.Open("sqlite3", "./tmp/app.db")
@@ -18,9 +20,11 @@ func InitDatabase() {
 	}
 	DBConn.LogMode(true)
 	DBConn.AutoMigrate(&model.User{})
+	DBConn.AutoMigrate(&model.Input{})
 	fmt.Println("Connection Opened to Database")
 }
 
+//CloseDatabase closes the database connection
 func CloseDatabase() {
 	if DBConn != nil {
 		DBConn.Close()

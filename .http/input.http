@@ -1,0 +1,24 @@
+POST http://localhost:4000/inputs HTTP/1.1
+content-type: application/json
+
+{
+    "description": "New entry",
+    "value": 10.00,
+    "type": 1,
+    "status": 0,
+    "month": 8,
+    "year": 2020,
+    "user": {
+      "ID": 1,
+      "CreatedAt": "2020-08-14T19:19:04.191785054-03:00",
+      "UpdatedAt": "2020-08-14T19:19:04.191785054-03:00",
+      "DeletedAt": null,
+      "name": "Scott Summers",
+      "mail": "summers@xacademy.com",
+      "password": "emma@frost123"
+    }
+}
+
+###
+GET  http://localhost:4000/inputs HTTP/1.1
+content-type: application/json
